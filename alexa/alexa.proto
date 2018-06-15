@@ -11,6 +11,7 @@ message AlexaRequest {
 message AlexaResponse {
     string version = 1;
     SessionAttributes sessionAttributes = 2;
+    Response response = 3;
 }
 message Session {
     bool new = 1;
