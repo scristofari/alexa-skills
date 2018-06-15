@@ -1,20 +1,15 @@
 package main
 
 import (
-	"log"
+	"context"
 
-	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/scristofari/alexa-hello/alexa"
 )
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	log.Printf("Processing Lambda request %s\n", request.RequestContext.RequestID)
-
-	return events.APIGatewayProxyResponse{
-		Body:       "Hello Lambda",
-		StatusCode: 200,
-	}, nil
-
+func handler(ctx context.Context, r alexa.AlexaRequest) (*alexa.AlexaResponse, error) {
+	res, _ := alexa.Speak("Hello, lambda")
+	return res, nil
 }
 func main() {
 	lambda.Start(handler)
