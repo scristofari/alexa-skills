@@ -6,7 +6,7 @@ func Speak(message string) (*AlexaResponse, error) {
 		Response: &Response{
 			OutputSpeech: &OutputSpeech{
 				Type: "PlainText",
-				Text: "Hello, Lambda",
+				Text: message,
 			},
 		},
 	}

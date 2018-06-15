@@ -8,8 +8,7 @@ import (
 )
 
 func handler(ctx context.Context, r alexa.AlexaRequest) (*alexa.AlexaResponse, error) {
-	res, _ := alexa.Speak("Hello, lambda")
-	return res, nil
+	return alexa.Speak("Hello, Lambda")
 }
 func main() {
 	lambda.Start(handler)
