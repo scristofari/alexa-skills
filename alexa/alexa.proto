@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package alexa;
+
+message AlexaRequest {
+  string version = 1;
+  Session session = 2;
+  Context context = 3;
+  Request request = 4;
+}
+message AlexaResponse {
+    string version = 1;
+    SessionAttributes sessionAttributes = 2;
+}
+message Session {
+    bool new = 1;
+    string sessionId = 2;
+    Application Application = 3;
+    Attributes attributes = 4;
+    User user = 5;
+}
+message SessionAttributes {
+    repeated string key = 1;
+}
+message Context {
+    System System = 1;
+    AudioPlayer AudioPlayer = 2;
+}
+message System {
+    Device device = 1;
+    Application application = 2;
+    User user = 3;
+    string apiEndpoint = 4;
+    string apiAccessToken = 5;
+}
+message Device {
+    string deviceId = 1;
+    SupportedInterfaces supportedInterfaces = 2;
+}
+message SupportedInterfaces {}
+message Application {
+    string applicationId = 1;
+}
+message Attributes {
+    repeated string key = 1;
+}
+message User {
+    string userId = 1;
+    string accessToken = 2;
+    Permissions Permissions = 3;
+}
+message Permissions {
+    string consentToken = 1;
+}
+message AudioPlayer {
+    enum PlayerActivity {
+        IDLE = 0;
+        PAUSED = 1;
+        PLAYING = 2;
+        BUFFER_UNDERRUN = 3;
+        FINISHED = 4;
+        STOPPED = 5;
+    }
+    PlayerActivity playerActivity = 1;
+    string token = 2;
+    int64 offsetInMilliseconds = 3;
+}
+message Request {
+    string type = 1;
+    string requestId = 2;
+    string timestamp = 3;
+    string locale = 4;
+}
+message Response {
+    OutputSpeech outputSpeech = 1;
+    Card card = 2;
+    OutputSpeech reprompt = 3;
+    bool shouldEndSession = 4;
+}
+message OutputSpeech {
+    string type = 1;
+    string text = 2;
+    string ssml = 3;
+}
+message Card {
+    string type = 1;
+    string title = 2;
+    string content = 3;
+    string text = 4;
+    Image image = 5;
+}
+message Image {
+    string smallImageUrl = 1;
+    string largeImageUrl = 2;
+}
+message Directives {}
