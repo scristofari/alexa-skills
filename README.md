@@ -1,5 +1,1 @@
 # Golang Alexa
-
-## TODO
-
-    Directives

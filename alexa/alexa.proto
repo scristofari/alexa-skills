@@ -62,7 +62,7 @@ message AudioPlayer {
         FINISHED = 4;
         STOPPED = 5;
     }
-    PlayerActivity playerActivity = 1;
+    string playerActivity = 1;
     string token = 2;
     int64 offsetInMilliseconds = 3;
 }
